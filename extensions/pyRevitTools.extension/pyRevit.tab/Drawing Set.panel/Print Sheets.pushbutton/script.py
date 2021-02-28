@@ -745,6 +745,8 @@ class PrintSheetsWindow(forms.WPFWindow):
                                    doc=self.selected_doc):
                 for idx, sheet in enumerate(target_sheets):
                     rvtsheet = sheet.revit_sheet
+                    if NPC in rvtsheet.SheetNumber:
+                        rvtsheet.SheetNumber = rvtsheet.SheetNumber.replace(NPC, '')
                     original_sheetnums.append(rvtsheet.SheetNumber)
                     rvtsheet.SheetNumber = \
                         NPC * (idx + 1) + rvtsheet.SheetNumber
